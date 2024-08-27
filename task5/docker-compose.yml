@@ -1,0 +1,31 @@
+# version: '3' warning message from docker-compose build:
+# the attribute `version` is obsolete, it will be ignored,
+# please remove it to avoid potential confusion 
+
+services:
+  back-end:
+    build:
+      context: ./back-end
+      dockerfile: Dockerfile
+    image: softy-pinko-back-end:task5
+    container_name: softy-pinko-back-end
+    ports:
+      - "5252"
+  
+  front-end:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    image: softy-pinko-front-end:task5
+    container_name: softy-pinko-front-end
+    ports:
+      - "9000"
+
+  proxy:
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile
+    image: softy-pinko-proxy:task5
+    container_name: softy-pinko-proxy
+    ports:
+      - "80:80"
